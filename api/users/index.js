@@ -48,4 +48,5 @@ router.post('/:userName/favourites', (req, res, next) => {
         user => res.status(201).send(user.favourites)
     ).catch(next);
   });
+  
 export default router;
