@@ -3,10 +3,10 @@ import express from 'express';
 import moviesRouter from './api/movies';
 import bodyParser from 'body-parser';
 import './db';
-import {loadUsers} from './seedData';
 import usersRouter from './api/users';
 import session from 'express-session';
 import passport from './authenticate';
+import {loadUsers, loadMovies} from './seedData';
 
 dotenv.config();
 
@@ -29,6 +29,7 @@ const errHandler = (err, req, res, next) => {
 // eslint-disable-next-line no-undef
 if (process.env.SEED_DB) {
   loadUsers();
+  loadMovies();
 }
 
 app.use(session({
